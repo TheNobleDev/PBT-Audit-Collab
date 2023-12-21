@@ -1,6 +1,6 @@
 # Specifications
 ### Project Overview/Purpose
-To  Do
+The projects purpose is to have launch a prediction market using the gnosis conditional token frame work. The PolyBet Token serves as the governance token of the prediction market and it will distributed to users to incentivize certain actions such as adding liquidity to the pool which enables trading.
 
 ### Functional, Technical Requirements
 Functional and Technical Requirements can be found as follows:
