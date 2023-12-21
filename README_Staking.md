@@ -32,4 +32,5 @@ The project configuration is found in [hardhat.config.js](hardhat.config.js), wh
 A general view of the Staking contract structures and interactions between different functions can be found as follows:
 
 PBT Staking: [PBT Staking architecture](docs/PBT_Staking_Architecture.svg) document
+
 LP Staking: [LP Staking architecture](docs/LP_Staking_Architecture.svg) document

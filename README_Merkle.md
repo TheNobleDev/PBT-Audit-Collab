@@ -22,4 +22,4 @@ The project configuration is found in [hardhat.config.js](hardhat.config.js), wh
 # Architecture Overview
 A general view of the Staking contract structures and interactions between different functions can be found as follows:
 
-PBT Distributor: [PBT Distributor architecture](docs/PBT_Distributor_Architecture.pdf) document
+PBT Distributor: [PBT Distributor architecture](docs/PBT_Distributor_Architecture.svg) document
