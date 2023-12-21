@@ -4,7 +4,9 @@ To  Do
 
 ### Functional, Technical Requirements
 Functional and Technical Requirements can be found as follows:
+
 Merkle: [Merkle requirements](README_Merkle.md) document
+
 Staking: [Staking requirements](README_Staking.md) document
 
 # Getting Started
@@ -53,6 +55,3 @@ To add the private key of a deployer account, assign the following variables
 ```
 PRIVATE_KEY=...
 ```
-
-
-```tree -I "node_modules|coverage|cache|artifacts"```
