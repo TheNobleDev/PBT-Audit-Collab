@@ -1,42 +1,58 @@
-# Advanced Sample Hardhat Project
+# Specifications
+### Project Overview/Purpose
+To  Do
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+### Functional, Technical Requirements
+Functional and Technical Requirements can be found as follows:
+Merkle: [Merkle requirements](README_Merkle.md) document
+Staking: [Staking requirements](README_Staking.md) document
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
+# Getting Started
+Recommended Node version is 20.0.0 and above.
 
-Try running some of the following tasks:
+### Available commands
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.js
-node scripts/deploy.js
-npx eslint '**/*.js'
-npx eslint '**/*.js' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+```bash
+# install dependencies
+$ npm install
+
+# build for production
+$ npm run build
+
+# clean, build, run tests
+$ npm run rebuild
+
+# run tests
+$ npm run test
+
+# compute tests coverage
+$ npm run coverage
 ```
 
-# Etherscan verification
+# Project Structure
+This a hardhat javascript project composed of contracts, tests, and deploy instructions.
 
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
+## Tests
 
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
+Tests are found in the `./test/` folder.
 
-```shell
-hardhat run --network ropsten scripts/deploy.js
+Both positive and negative cases are covered, and test coverage is 100%.
+
+## Contracts
+
+Solidity smart contracts are found in `./contracts/`
+
+`./contracts/merkle` folder contains contracts used in token distribution.
+`./contracts/staking` folder contains contracts for the PBT token, and various staking mechanisms.
+
+## Deploy
+Deploy script can be found in the `scripts` folder.
+
+Rename `./.env.example` to `./.env` in the project root.
+To add the private key of a deployer account, assign the following variables
+```
+PRIVATE_KEY=...
 ```
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
 
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
-```
+```tree -I "node_modules|coverage|cache|artifacts"```
