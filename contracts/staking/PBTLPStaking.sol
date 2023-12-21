@@ -35,6 +35,8 @@ contract PBTLPStaking {
 
     constructor(IERC20 _pbt, IERC20 _lpToken, uint256 _pbtPerBlock, uint256 _startBlock, uint256 _totalRewards) {
         require(_startBlock > block.number, "StartBlock must be in the future");
+        require(_lpToken != _pbt, "LP token must not be PBT");
+
         pbt = _pbt;
         pbtPerBlock = _pbtPerBlock;
         poolInfo = PoolInfo({
