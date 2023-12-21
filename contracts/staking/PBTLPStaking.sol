@@ -3,9 +3,8 @@ pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract PBTLPStaking is Ownable {
+contract PBTLPStaking {
     using SafeERC20 for IERC20;
 
     struct UserInfo {
@@ -34,7 +33,7 @@ contract PBTLPStaking is Ownable {
     event Withdraw(address indexed user, uint256 amount);
     event EmergencyWithdraw(address indexed user, uint256 amount);
 
-    constructor(IERC20 _pbt, IERC20 _lpToken, uint256 _pbtPerBlock, uint256 _startBlock, uint256 _totalRewards) Ownable(msg.sender) {
+    constructor(IERC20 _pbt, IERC20 _lpToken, uint256 _pbtPerBlock, uint256 _startBlock, uint256 _totalRewards) {
         require(_startBlock > block.number, "StartBlock must be in the future");
         pbt = _pbt;
         pbtPerBlock = _pbtPerBlock;
@@ -104,7 +103,7 @@ contract PBTLPStaking is Ownable {
     }
 
     // Withdraw without caring about rewards. EMERGENCY ONLY.
-    function emergencyWithdraw() public {
+    function emergencyWithdraw() external {
         PoolInfo storage pool = poolInfo;
         UserInfo storage user = userInfo[msg.sender];
         pool.lpToken.safeTransfer(address(msg.sender), user.amount);

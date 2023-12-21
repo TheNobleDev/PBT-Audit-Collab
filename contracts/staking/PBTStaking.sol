@@ -2,12 +2,11 @@
 pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * This contract should only be used to stake PBT token, and earn PBT token rewards.
  */
-contract PBTStaking is Ownable {
+contract PBTStaking {
 
     struct UserInfo {
         uint256 amount;
@@ -33,7 +32,7 @@ contract PBTStaking is Ownable {
     event Withdraw(address indexed user, uint256 amount);
     event EmergencyWithdraw(address indexed user, uint256 amount);
 
-    constructor(IERC20 _pbt, uint256 _pbtPerBlock, uint256 _startBlock, uint256 _totalRewards) Ownable(msg.sender) {
+    constructor(IERC20 _pbt, uint256 _pbtPerBlock, uint256 _startBlock, uint256 _totalRewards) {
         require(_startBlock > block.number, "StartBlock must be in the future");
         pbt = _pbt;
         pbtPerBlock = _pbtPerBlock;
