@@ -74,7 +74,7 @@ contract PBTLPStaking {
             uint256 pending = ((user.amount * pool.accPbtPerShare)/1e12) - user.rewardDebt;
             if(pending > 0) {
                 pbtForRewards -= pending;
-                _safePbtTransfer(msg.sender, pending);
+                pbt.transfer(msg.sender, pending);
             }
         }
         if(_amount > 0) {
@@ -94,7 +94,7 @@ contract PBTLPStaking {
         uint256 pending = ((user.amount * pool.accPbtPerShare)/1e12) - user.rewardDebt;
         if(pending > 0) {
             pbtForRewards -= pending;
-            _safePbtTransfer(msg.sender, pending);
+            pbt.transfer(msg.sender, pending);
         }
         user.amount -= _amount;
         user.rewardDebt = (user.amount * pool.accPbtPerShare)/1e12;
@@ -122,7 +122,7 @@ contract PBTLPStaking {
         if (blockToUse <= pool.lastRewardBlock || pool.lastRewardBlock >= pool.endBlock) {
             return;
         }
-        if(blockToUse >= pool.endBlock) {
+        else if(blockToUse >= pool.endBlock) {
             blockToUse = pool.endBlock;
         }
 
@@ -137,15 +137,5 @@ contract PBTLPStaking {
         pbtForRewards += pbtReward;
         pool.accPbtPerShare += ((pbtReward * 1e12)/lpSupply);
         pool.lastRewardBlock = blockToUse;
-    }
-
-    // Safe pbt transfer function, just in case if rounding error causes pool to not have enough PBTs.
-    function _safePbtTransfer(address _to, uint256 _amount) internal {
-        uint256 pbtBal = pbt.balanceOf(address(this));
-        if (_amount > pbtBal) {
-            pbt.transfer(_to, pbtBal);
-        } else {
-            pbt.transfer(_to, _amount);
-        }
     }
 }
